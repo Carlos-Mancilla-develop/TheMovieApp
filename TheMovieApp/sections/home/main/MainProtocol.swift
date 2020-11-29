@@ -18,6 +18,8 @@ protocol MainViewProtocol: class {
 
 protocol MainRouterProtocol: class {
     // PRESENTER -> ROUTER
+    var newDetailView: UIViewController? { get set }
+    
     static func createMainModule() -> UIViewController
     
     func presentNewViewDetail(from view: MainViewProtocol, withMovie: MovieBusiness)

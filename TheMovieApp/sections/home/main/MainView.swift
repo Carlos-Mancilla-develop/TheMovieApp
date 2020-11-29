@@ -28,8 +28,8 @@ class MainView: UIViewController {
 
 extension MainView: MainViewProtocol {
     func presenterPushMoviesView(receivedMovies: [MovieBusiness]) {
-        print("MainView: Recibido desde el Presenter, receivedMovies: \(receivedMovies)")
-        print("MainView: Ahora se debe desplegar en la vista")
+        //print("MainView: Recibido desde el Presenter, receivedMovies: \(receivedMovies)")
+        //print("MainView: Ahora se debe desplegar en la vista")
         arrayMovies = receivedMovies
         DispatchQueue.main.async {
             self.tabla.reloadData()
@@ -52,11 +52,13 @@ extension MainView: MainViewProtocol {
 
 extension MainView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //print("MainView: arrayMovies.count: \(arrayMovies.count)")
         return arrayMovies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
+        //print("MainView: movie.title: \(arrayMovies[indexPath.row].title)")
         cell.textLabel?.text = arrayMovies[indexPath.row].title
         return cell
     }
@@ -67,8 +69,10 @@ extension MainView: UITableViewDataSource {
 extension MainView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //presenter?.showDetailView(with: DatoURL(datosURL: arrayViewURL[indexPath.row].datosURL))
-        print("didSelectRowAt indexPath: \(indexPath)")
+        let movie = MovieBusiness(id: arrayMovies[indexPath.row].id, title: arrayMovies[indexPath.row].title, overview: arrayMovies[indexPath.row].overview, releaseDate: arrayMovies[indexPath.row].releaseDate, posterPath: arrayMovies[indexPath.row].posterPath)
+        
+        print("MainView: selected movie,title: \(movie.title)")
+        presenter?.showDetailView(with: movie)
     }
     
 }

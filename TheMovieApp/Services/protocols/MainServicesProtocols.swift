@@ -13,19 +13,10 @@ protocol MainRemoteDataManagerInputProtocol: class {
     var remoteRequestHandler: MainRemoteDataManagerOutputProtocol? { get set }
     
     func externalGetMovies()
+    
 }
 
 protocol MainRemoteDataManagerOutputProtocol: class {
     // REMOTEDATAMANAGER -> REPOSITORY
     func remoteDataManagerCallBackMovies(with movies: [Movie])
-}
-
-//Vista Detalle
-protocol DetailTestRemoteDataManagerInputProtocol: class {
-    // REPOSITORY -> REMOTEDATAMANAGER
-    var remoteRequestHandler: DetailTestRemoteDataManagerOutputProtocol? { get set }
-}
-
-protocol DetailTestRemoteDataManagerOutputProtocol: class {
-    // REMOTEDATAMANAGER -> REPOSITORY
 }

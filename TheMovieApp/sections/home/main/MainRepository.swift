@@ -13,7 +13,7 @@ class MainRepository: MainRepositoryInputProtocol {
     var remoteDatamanager: MainRemoteDataManagerInputProtocol?
     
     func repositoryGetMovies() {
-        print("MainRepository: Decirle al remote data manager que tiene que traer unos datos")
+        //print("MainRepository: Decirle al remote data manager que tiene que traer unos datos")
         remoteDatamanager?.externalGetMovies()
     }
     
@@ -21,7 +21,7 @@ class MainRepository: MainRepositoryInputProtocol {
 
 extension MainRepository: MainRemoteDataManagerOutputProtocol {
     func remoteDataManagerCallBackMovies(with movies: [Movie]) {
-        print("MainRepository: El repository debe enviarle los datos al interactor.")
+        //print("MainRepository: El repository debe enviarle los datos al interactor.")
         interactor?.repositoryCallBackMovies(with: movies)
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class MainRouter: MainRouterProtocol {
+    public var newDetailView: UIViewController?
 
     class func createMainModule() -> UIViewController {
         let navController = mainStoryboard.instantiateViewController(withIdentifier: "navigation")
@@ -40,17 +41,11 @@ class MainRouter: MainRouterProtocol {
     }
     
     func presentNewViewDetail(from view: MainViewProtocol, withMovie: MovieBusiness) {
-        print("MainRouter: Presentar el detalle de la vista, crear nuevo modulo e instanciarlo")
-    }
-    
-    /*
-    func presentNewViewDetail(from view: MainViewProtocol, withData: DatoURL) {
-        print("MainRouter: Presentar el detalle de la vista, crear nuevo modulo e instanciarlo")
-        let newDetailView = DetailTestRouter.createDetailTestModule(with: withData)
+        //print("MainRouter: Presentar el detalle de la vista, crear nuevo modulo e instanciarlo")
+        newDetailView = DetailRouter.createDetailModule(with: withMovie)
         
         if let newView = view as? UIViewController {
-            newView.navigationController?.pushViewController(newDetailView, animated: true)
+            newView.navigationController?.pushViewController(newDetailView!, animated: true)
         }
     }
-    */
 }

@@ -8,9 +8,9 @@
 import Foundation
 
 struct MovieBusiness {
-    let id: Int?
-    let title: String?
-    let overview: String?
-    let releaseDate: Date?
-    let posterPath: String?
+    let id: Int
+    let title: String
+    let overview: String
+    let releaseDate: Date
+    let posterPath: String
 }
